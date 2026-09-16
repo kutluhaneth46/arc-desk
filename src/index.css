@@ -1,0 +1,176 @@
+@import 'tailwindcss';
+
+:root {
+  --ink: #061018;
+  --sea: #0b2740;
+  --signal: #2ee6a8;
+  --signal-dim: #1a9f74;
+  --fog: #d5e4ee;
+  --mist: #8eabbd;
+  --warn: #f0b429;
+  --danger: #ff6b6b;
+  --glass: rgba(13, 40, 64, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--fog);
+  font-family: Manrope, system-ui, sans-serif;
+  background:
+    radial-gradient(1200px 700px at 12% -10%, rgba(46, 230, 168, 0.16), transparent 55%),
+    radial-gradient(900px 600px at 90% 0%, rgba(56, 140, 220, 0.18), transparent 50%),
+    radial-gradient(800px 500px at 50% 110%, rgba(46, 230, 168, 0.08), transparent 45%),
+    linear-gradient(165deg, #040b12 0%, #0a1c2e 48%, #061018 100%);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cpath d='M0 80H160M80 0V160' stroke='%232ee6a810' stroke-width='1'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+.font-display {
+  font-family: Syne, Manrope, sans-serif;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.55;
+  }
+}
+
+@keyframes sweep {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+.rise {
+  animation: rise 0.7s ease both;
+}
+
+.rise-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.rise-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.rise-delay-3 {
+  animation-delay: 0.32s;
+}
+
+.live-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--signal);
+  box-shadow: 0 0 0 0 rgba(46, 230, 168, 0.55);
+  animation: breathe 1.8s ease-in-out infinite;
+}
+
+.hero-wash {
+  background: linear-gradient(120deg, rgba(46, 230, 168, 0.2), rgba(56, 140, 220, 0.12), rgba(46, 230, 168, 0.05));
+  background-size: 200% 200%;
+  animation: sweep 8s ease infinite alternate;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid rgba(213, 228, 238, 0.18);
+  background: rgba(6, 16, 24, 0.55);
+  color: var(--fog);
+  border-radius: 0.35rem;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field:focus {
+  border-color: rgba(46, 230, 168, 0.65);
+  box-shadow: 0 0 0 3px rgba(46, 230, 168, 0.12);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0;
+  border-radius: 0.35rem;
+  padding: 0.85rem 1.25rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-signal {
+  background: var(--signal);
+  color: #04110c;
+}
+
+.btn-signal:hover:not(:disabled) {
+  background: #57f0bc;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--fog);
+  border: 1px solid rgba(213, 228, 238, 0.25);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: rgba(46, 230, 168, 0.55);
+}
